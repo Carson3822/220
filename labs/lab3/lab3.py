@@ -7,12 +7,10 @@ Certification of Authenticity:
 I certify that this assignment is entirely my own work.
 
 """
-
 def traffic():
     print("how many roads were serveyed?:\t")
     num_roads_serv = eval(input(" "))
     total_cars = 0
-
 
     for i in range(num_roads_serv):
 
@@ -31,7 +29,6 @@ def traffic():
             total_cars += num_cars_day
 
         avg_num_cars = num_cars_tot_day/(num_days_serv)
-
 
         print("road", i+1 , "average number of vehicles per day:\t", avg_num_cars)
 
