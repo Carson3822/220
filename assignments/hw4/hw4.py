@@ -1,64 +1,147 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: Carson Shields
+Hw4.py
 
-Problem: <Brief, one or two sentence description of the problem that this program solves, in your own words.>
+Problem: Hw 4 problems
 
 Certification of Authenticity:
-<include one of the following>
 I certify that this assignment is entirely my own work.
-I certify that this assignment is my own work, but I discussed it with: <Name(s)>
+
 """
+import math
 
 from graphics import *
 
 
 def squares():
-    # Creates a graphical window
+ # Creates a graphical window
     width = 400
     height = 400
     win = GraphWin("Clicks", width, height)
+    win.setBackground("white")
 
-    # number of times user can move circle
     num_clicks = 5
 
-    # create a space to instruct user
     inst_pt = Point(width / 2, height - 10)
-    instructions = Text(inst_pt, "Click to move circle")
+    instructions = Text(inst_pt, "Click to Draw Squares")
     instructions.draw(win)
 
-    # builds a circle
-    shape = Circle(Point(50, 50), 20)
-    shape.setOutline("red")
-    shape.setFill("red")
+    shape = Rectangle(Point(225, 175), Point(175, 225))  # center of circle
     shape.draw(win)
+    shape.setFill("white")
+    shape.setOutline("white")
 
-    # allows the user to click multiple times to move the circle
     for i in range(num_clicks):
         click = win.getMouse()
-        center = shape.getCenter()  # center of circle
+        change_x = click.getX()
+        change_y = click.getY()
 
-        # move amount is distance from center of circle to the
-        # point where the user clicked
-        change_x = click.getX() - center.getX()
-        change_y = click.getY() - center.getY()
-        shape.move(change_x, change_y)
+        shape = Rectangle(Point(change_x - 25, change_y - 25), Point(change_x + 25, change_y + 25))
+        shape.draw(win)
+        shape.setFill("red")
+        shape.setOutline("red")
+
+        i += 1
+
+    message = Text(Point(200, 350), "Click to close window")
+    message.draw(win)
+
+    win.getMouse()
+    win.close()
+
+def rectangle():
+    width = 400
+    height = 400
+    win = GraphWin("Rectangle", width, height)
+    win.setBackground("white")
+
+    click_1 = win.getMouse()
+    p_1 = Point(click_1.getX(), click_1.getY())
+    click_2 = win.getMouse()
+    p_2 = Point(click_2.getX(), click_2.getY())
+
+    shape = Rectangle(p_1, p_2)
+    shape.draw(win)
+    shape.setFill("green")
+    shape.setOutline("green")
+    base = abs(click_1.getX() - click_2.getX())
+    hght = abs(click_1.getY() - click_2.getY())
+
+    area = (base * hght)
+    perimeter = (2 * base + 2 * hght)
+
+    Text(Point(180, 350), "Area:").draw(win)
+    Text(Point(180, 375), "Perimeter:").draw(win)
+    Text(Point(220,350), area).draw(win)
+    Text(Point(223.4, 375), perimeter).draw(win)
+
+
+
+    Text(Point(200,330), "Click Again to Close").draw(win)
 
     win.getMouse()
     win.close()
 
 
-def rectangle():
-    pass
-
 
 def circle():
-    pass
+    width = 400
+    height = 400
+    win = GraphWin("Rectangle", width, height)
+    win.setBackground("white")
+
+    click_1 = win.getMouse()
+    p_1 = Point(click_1.getX(), click_1.getY())
+    x_1 = click_1.getX()
+    y_1 = click_1.getY()
+
+    click_2 = win.getMouse()
+    x_2 = click_2.getX()
+    y_2 = click_2.getY()
+
+    dist = ((((x_2 - x_1) ** 2) + (y_2 - y_1) ** 2) ** (1 / 2))
+
+    shape = Circle(p_1, dist)
+    shape.draw(win)
+    shape.setFill("light blue")
+    shape.setOutline("light blue")
+
+    r_msg = Text(Point(100,350), "Radius:")
+    r_msg.draw(win)
+    Text(Point(200,350), (dist/2)).draw(win)
+
+
+    end_msg = Text(Point(200,330), "Click Again to Close")
+    end_msg.draw(win)
+
+    win.getMouse()
+    win.close()
+
+
+
+
+
 
 
 def pi2():
-    pass
+    num_inp = eval(input("how many terms are there?: "))
+    acum_pi = 0
+    numerator = 4
+    denomenator = 1
+    sign = 1
+
+    for i in range(0, num_inp):
+
+        acum_pi += sign * (numerator/denomenator)
+        denomenator += 2
+        sign = sign * -1
+
+        i += 1
+
+    print("pi approximation: ", acum_pi)
+    print("accuracy:", abs(math.pi-acum_pi))
+
 
 
 if __name__ == '__main__':
-    pass
+
