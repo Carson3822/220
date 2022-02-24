@@ -1,88 +1,57 @@
 """
+
 Name: Carson Shields
-hw6.py
+lab6.py
 
-Problem: hw6 problem
-
+Problem: text processing and graphics
 Certification of Authenticity:
 I certify that this assignment is entirely my own work.
+
 """
-
-import math
-def cash_converter():
-    integer = eval(input("enter an integer: "))
-    dollar_amnt = "that is ${:.2f}".format(integer)
-    print(dollar_amnt)
+from graphics import *
 
 
-def encode():
-    msg = input("enter a message: ")
-    key = eval(input("enter a key: "))
-    new_msg = ""
+def vigenere():
+    win = GraphWin("Vigenere", 500, 500)
+    msg_1 = Text(Point(75, 50), "Message to Code")
+    msg_1.draw(win)
+    msg_2 = Text(Point(75, 100), "Enter Keyword")
+    msg_2.draw(win)
 
+    box_1 = Entry(Point(267, 50), 40).draw(win)
+    box_2 = Entry(Point(180, 100), 15).draw(win)
+
+    button = Rectangle(Point(200, 200), Point(300, 150))
+    button.draw(win)
+
+    button_txt = Text(button.getCenter(), "Encode")
+    button_txt.draw(win)
+
+    win.getMouse()
+    button.undraw()
+    button_txt.undraw()
+
+    msg = box_1.getText()
+    key = box_2.getText()
+    msg = msg.upper()
+    key = key.upper()
+    msg = msg.replace(" ", "")
+    key.replace(" ", "")
+
+    encoded = ""
     for i in range(len(msg)):
-        character = msg[i]
-        new_msg += chr(ord(character) + key)
 
-    print(new_msg)
+        value = ord(msg[i]) - 65
+        k_val = ord(key[i % len(key)]) - 65
+        val_2 = ((k_val + value) % 26) + 65
 
+        letter = chr(val_2)
+        encoded += letter
 
-def sphere_area(radius: float):
-    area = (4 * math.pi) * (radius ** 2)
+    Text(Point(250, 250), "Resulting Message").draw(win)
+    Text(Point(250, 275), encoded).draw(win)
 
-    return area
+    Text(Point(250, 400), "click again to close window").draw(win)
+    win.getMouse()
+    win.close()
 
-
-def sphere_volume(radius: float):
-    volume = (4.0/3.0) * math.pi * radius ** 3.0
-
-    return volume
-
-
-def sum_n(number: int):
-    total = 0
-    for i in range(number+1):
-        total += i
-
-    return total
-
-
-def sum_n_cubes(number: int):
-    total = 0
-    for i in range(number + 1):
-        total += i**3
-
-    return total
-
-
-def encode_better():
-
-
-    msg = input("enter a message: ")
-    key = input("enter a key: ")
-    key_length = 
-
-    for i in range(len(msg)):
-        for j in key
-        key += j
-
-        i+1
-    #for i in range(len(cypher)):
-        #print(cypher[i], end=": ")
-        #print(i)
-    #print(len(cypher))
-
-
-if __name__ == '__main__':
-    # cash_converter()
-    # encode()
-    # res = sphere_area(13)
-    # print(res)
-    # res = sphere_volume(13)
-    # print(res)
-    # res = sum_n(100)
-    # print(res)
-    # res = sum_n_cubes(13)
-    # print(res)
-    # encode_better()
-    pass
