@@ -1,0 +1,6 @@
+Billy Bother average: 87.0
+Oh No average: Error: the weights are less than 100
+Hermione Heffalump average: 95.4
+Too Bad average: Error: the weights are greater than 100
+Kurt the Kidd average: 82.5
+Class average: 88.3

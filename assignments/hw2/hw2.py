@@ -23,8 +23,8 @@ def sum_of_threes():
 
 
 def multiplication_table():
-    for x_1 in range( 1 , 11 ):
-        for y_1 in range( 1 , 11 ):
+    for i in range( 1 , 11 ):
+        for j in range( 1 , 11 ):
             print(str(x_1 * y_1), end="\t")
         print()
 

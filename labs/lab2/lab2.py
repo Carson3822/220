@@ -2,7 +2,7 @@
 Name: Carson Shields
 lab2.py
 
-Problem: lab 2 1 work
+Problem: lab 2 work
 Certification of Authenticity:
 I certify that this assignment is entirely my own work.
 

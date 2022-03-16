@@ -1,6 +1,13 @@
+"""
+Name: Carson Shields
+lab5.py
+
+Problem: text processing and graphics
+Certification of Authenticity:
+I certify that this assignment is entirely my own work.
+"""
 
 from graphics import *
-
 
 def triangle():
     win = GraphWin("Triangle", 1000, 1000)
