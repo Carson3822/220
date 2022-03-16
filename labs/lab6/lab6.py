@@ -31,7 +31,6 @@ def vigenere():
     button.undraw()
     button_txt.undraw()
 
-# actual cipher
     msg = box_1.getText()
     key = box_2.getText()
     msg = msg.upper()
@@ -55,3 +54,4 @@ def vigenere():
     Text(Point(250, 400), "click again to close window").draw(win)
     win.getMouse()
     win.close()
+
