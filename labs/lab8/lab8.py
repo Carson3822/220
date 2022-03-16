@@ -8,8 +8,7 @@ Certification of Authenticity:
 I certify that this assignment is entirely my own work.
 
 """
-abcdc
-import math
+
 from random import randint
 from graphics import color_rgb, GraphWin, Circle, Point
 import time
@@ -29,7 +28,7 @@ def did_collide(circ_1, circ_2):
     center_circ_2_x = center_circ_2.getX()
     center_circ_2_y = center_circ_2.getY()
     dist_1 = (center_circ_2_x - center_circ_1_x) ** 2
-    dist_2 = (center_circ_2_y - center_circ_2_y) ** 2
+    dist_2 = (center_circ_2_y - center_circ_1_y) ** 2
     dist_tot = (dist_2 + dist_1) ** (1/2)
 
     if dist_tot <= radius_sum:
@@ -42,14 +41,14 @@ def hit_vertical(circ, win):
     center_circ = circ.getCenter()
     center_circ_y = center_circ.getY()
     rad = circ.getRadius()
-    center_circ_y <= rad or center_circ_y >= height - rad
+    return center_circ_y <= rad or center_circ_y >= height - rad
 
 def hit_horizontal(circ, win):
     width = win.getWidth()
     center_circ = circ.getCenter()
     center_circ_x = center_circ.getX()
     rad = circ.getRadius()
-    center_circ_x <= rad or center_circ_x >= width - rad
+    return center_circ_x <= rad or center_circ_x >= width - rad
 
 def get_random_color():
     red = randint(0, 255)
@@ -85,22 +84,22 @@ def bumper():
             circ_2_move_y = - circ_2_move_y
 
         if hit_vertical(circ_1, win):
-            circ_1_move_x = circ_1_move_x
+            circ_1_move_x = - circ_1_move_x
             circ_1_move_y = - circ_1_move_y
 
         if hit_vertical(circ_2, win):
-            circ_2_move_x = circ_2_move_x
+            circ_2_move_x = - circ_2_move_x
             circ_2_move_y = - circ_2_move_y
 
         if hit_horizontal(circ_1, win):
             circ_1_move_x = - circ_1_move_x
-            circ_1_move_y = circ_1_move_y
+            circ_1_move_y = - circ_1_move_y
 
         if hit_horizontal(circ_2, win):
             circ_2_move_x = - circ_2_move_x
-            circ_2_move_y = circ_2_move_y
+            circ_2_move_y = - circ_2_move_y
 
-        time.sleep(.30)
+        time.sleep(.20)
 
     win.getMouse()
     win.close()
