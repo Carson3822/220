@@ -1,0 +1,78 @@
+"""
+
+Name: Carson Shields
+lab13.py
+
+Problem: lab13 problems
+Certification of Authenticity:
+I certify that this assignment is entirely my own work.
+
+"""
+from graphics import *
+
+def read_data(filename):
+    file_object = open(filename, "r")
+    read = file_object.read()
+    read = read.replace('\n', ' ')
+    cnt = 0
+    while read:
+        words = read.split(" ")
+        while cnt < len(words):
+            words[cnt] = int(words[cnt])
+            cnt += 1
+    return words
+    file_object.close()
+
+
+def is_in_linear(search_val, values):
+    i = 0
+    while i < len(values):
+        if values[i] == search_val:
+            return True
+        i += 1
+
+    return False
+
+
+def selection_sort(values):
+    n = len(values)
+    for i in range(n):
+        min = i
+        for j in range(i+1, n):
+            if values[j] < values[min]:
+                pl = values[min]
+                values[min] = values[j]
+                values[j] = pl
+    return values
+
+
+def calc_area(rectangle):
+    p_1 = rectangle.getP1()
+    p_2 = rectangle.getP2()
+
+    x_1 = p_1.getX()
+    x_2 = p_2.getX()
+    y_1 = p_1.getY()
+    y_2 = p_2.getY()
+
+    base = x_2 - x_1
+    height = y_2 - y_1
+
+    area = base * height
+    return area
+
+
+def rec_sort(rectangles):
+    n = len(rectangles)
+    area_lst = []
+    for i in range(n):
+        area_lst.append(calc_area(rectangles[i]))
+
+    for i in range(len(area_lst)):
+        min = i
+        for j in range(i + 1, len(area_lst)):
+            if area_lst[j] < area_lst[min]:
+                pl = area_lst[min]
+                area_lst[min] = rectangles[j]
+                area_lst[j] = pl
+    return area_lst
